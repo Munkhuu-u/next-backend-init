@@ -21,8 +21,7 @@ app.listen("3001", () => {
   console.log("Server is listening at port 3001");
 });
 
-let names = [];
-names = users.map((e) => {
+const names = users.map((e) => {
   console.log("e: ", e.name);
   return e.name;
 });
