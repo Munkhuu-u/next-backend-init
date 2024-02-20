@@ -1,29 +1,42 @@
 const express = require("express");
+const dummyData = require("./dummy.json");
 const app = express();
-const { product, users } = require("./dummy.json");
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+const fs = require("fs");
 
-app.get("/abc", (request, response) => {
-  response.type("application/json");
-  response.send("Hello");
+app.get("/users", (req, res) => {
+  res.type("application.json");
+  res.send(dummyData);
 });
 
-app.get("/product", (request, response) => {
-  response.type("application/json");
-  response.send({ product, users });
-});
+app.post("/add-user", (req, res) => {
+  const newUser = req.body;
+  //   console.log(newUser);
 
-app.get("/names", (request, response) => {
-  response.type("application/json");
-  response.send({ names });
+  fs.readFile("dummy.json", (error, data) => {
+    if (error) {
+      console.log("Error in reading file");
+    } else {
+      const jsonFile = JSON.parse(data.toString());
+      jsonFile.users.push(newUser);
+      fs.writeFile("dummy.json", JSON.stringify(jsonFile), (err) => {
+        if (err) {
+          console.log(err);
+          res.send("error happened");
+        } else {
+          console.log("write file success");
+          res.send("User added");
+        }
+      });
+    }
+    // fs.writeFile("dummy.json", JSON.stringify, err);
+  });
+
+  res.status(200);
+  res.send("User added successfully");
 });
 
 app.listen("3001", () => {
   console.log("Server is listening at port 3001");
 });
-
-const names = users.map((e) => {
-  console.log("e: ", e.name);
-  return e.name;
-});
-
-console.log("names: ", names);

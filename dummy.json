@@ -1,30 +1,9 @@
 {
-  "product": [
-    {
-      "name": "Munkhbat",
-      "serial": "12345",
-      "color": "black"
-    },
-    {
-      "name": "asfd",
-      "serial": "23545",
-      "color": "white"
-    },
-    {
-      "name": "fgsdhj",
-      "serial": "64578",
-      "color": "blue"
-    },
-    {
-      "name": "65u6r",
-      "serial": "145380",
-      "color": "navy"
-    }
-  ],
   "users": [
-    { "name": "munkhbat" },
-    { "name": "temuulen" },
-    { "name": "ankhaa" },
-    { "name": "tuya" }
+    { "name": "Munkhbat" },
+    { "name": "Temuulen" },
+    { "name": "Enkhtuya" },
+    { "name": "Dulguun" },
+    { "name": "New person" }
   ]
 }
